@@ -7,7 +7,13 @@ public class Palindrome {
 	
 	/** Checks if the given string is a palindrome. */
 	public static boolean isPalindrome(String s) {
-		//// Replace the followaing statement with your code
-		return false;
-    }
+		s = s.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
+		return isPalindromeRec(s);
+	}
+
+	private static boolean isPalindromeRec(String s) {
+		if (s.length() <= 1) return true;
+		if (s.charAt(0) != s.charAt(s.length() - 1)) return false;
+		return isPalindromeRec(s.substring(1, s.length() - 1));
+	}
 }
